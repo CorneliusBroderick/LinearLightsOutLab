@@ -1,10 +1,12 @@
 package ie.ul.cbroderick.linearlightsoutlab;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,8 +46,21 @@ public class MainActivity extends AppCompatActivity {
         String tagAsStr = view.getTag().toString();
         int tagAsInt = Integer.parseInt(tagAsStr);
 
-        mGame.pressedButtonAtIndex(tagAsInt);
+        //Debug code
+        Log.d("TTT", "You pressed index " + tagAsInt);
+        Toast.makeText(this, "You pressed index " + tagAsInt, Toast.LENGTH_SHORT).show();
+
+        //mGame.pressedButtonAtIndex(tagAsInt);
         //updateView();
+
+    }
+
+    public void pressedNewGame(View view) {
+        //Debug code
+        Toast.makeText(this, "New Game", Toast.LENGTH_SHORT).show();
+
+        mGame = new LightsOutGame(NUM_SQUARES);
+        updateView();
 
     }
 }

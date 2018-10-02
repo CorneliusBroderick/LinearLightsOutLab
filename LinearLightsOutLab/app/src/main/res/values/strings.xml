@@ -2,4 +2,6 @@
     <string name="app_name">LinearLightsOutLab</string>
     <string name="new_game">New Game</string>
     <string name="instruction">Make the buttons match</string>
+    <string name="number_of_turns">You have taken %d turns</string>
+    <string name="you_won">You won!</string>
 </resources>
