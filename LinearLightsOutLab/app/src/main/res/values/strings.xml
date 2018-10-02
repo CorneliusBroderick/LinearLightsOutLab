@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">LinearLightsOutLab</string>
     <string name="new_game">New Game</string>
-    <string name="x_turn">Make the buttons match</string>
+    <string name="instruction">Make the buttons match</string>
 </resources>
