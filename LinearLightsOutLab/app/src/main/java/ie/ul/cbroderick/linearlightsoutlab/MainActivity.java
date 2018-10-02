@@ -2,6 +2,7 @@ package ie.ul.cbroderick.linearlightsoutlab;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         mGame = new LightsOutGame(NUM_SQUARES);
 
+
         mGameStateTextView = findViewById(R.id.game_state_text_view);
         mButtons = new Button[NUM_SQUARES];
         mButtons[0] = findViewById(R.id.button0);
@@ -35,6 +37,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateView() {
         //mGameStateTextView.setText(mGame.getNumPresses());
+
+    }
+
+    public void pressedSquare(View view) {
+        String tagAsStr = view.getTag().toString();
+        int tagAsInt = Integer.parseInt(tagAsStr);
+
+        mGame.pressedButtonAtIndex(tagAsInt);
+        //updateView();
 
     }
 }
