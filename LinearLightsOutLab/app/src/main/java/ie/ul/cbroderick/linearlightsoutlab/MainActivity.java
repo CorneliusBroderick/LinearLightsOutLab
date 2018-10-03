@@ -8,19 +8,35 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int NUM_SQUARES = 7;
     private LightsOutGame mGame;
     private TextView mGameStateTextView;
+    private Button mNew_game_button;
     private int number_of_presses;
     private Button[] mButtons;
-    private static final int NUM_SQUARES = 7;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+
+        if (savedInstanceState != null) {
+            // Code to use what it returns to initialize the game object and screen.
+            //savedInstanceState.getXX(key)
+            //savedInstanceState.getBundle()
+            //savedInstanceState.
+            super.onCreate(savedInstanceState);
+
+        } else {
+            // Normal operation
+            super.onCreate(savedInstanceState);
+        }
+
+
         setContentView(R.layout.activity_main);
+
 
         mGame = new LightsOutGame(NUM_SQUARES);
         mGameStateTextView = findViewById(R.id.game_state_text_view);
+        mNew_game_button = findViewById(R.id.new_game);
         mButtons = new Button[NUM_SQUARES];
         mButtons[0] = findViewById(R.id.button0);
         mButtons[1] = findViewById(R.id.button1);
@@ -33,24 +49,39 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        // Save off data using outState.putXX(key, value)
+        // Hint: you will use the appropriate methods to store int[] and ints,
+        // maybe a String.
+    }
+
     private void updateView() {
 
-        if (number_of_presses ==0){
+        if (number_of_presses == 0) {
             //mMessageTextView.setText(getString(R.string.message_color_points, mColorIdentificationScore));
             mGameStateTextView.setText(getString(R.string.instruction));
-        }
-        else{
+        } else {
             mGameStateTextView.setText(getString(R.string.number_of_turns, number_of_presses));
         }
 
         if (mGame.checkForWin()) {
             mGameStateTextView.setText(getString(R.string.you_won));
+            mButtons[0].setEnabled(false);
+            mButtons[1].setEnabled(false);
+            mButtons[2].setEnabled(false);
+            mButtons[3].setEnabled(false);
+            mButtons[4].setEnabled(false);
+            mButtons[5].setEnabled(false);
+            mButtons[6].setEnabled(false);
+
+            //mNew_game_button.setLayoutParams(o);
         }
-        for(int i = 0; i < NUM_SQUARES; i++){
-            if (mGame.getValueAtIndex(i) == 1){
+        for (int i = 0; i < NUM_SQUARES; i++) {
+            if (mGame.getValueAtIndex(i) == 1) {
                 mButtons[i].setText("1");
-            }
-            else{
+            } else {
                 mButtons[i].setText("0");
             }
         }
@@ -76,6 +107,13 @@ public class MainActivity extends AppCompatActivity {
         //Debug code
         //Toast.makeText(this, "New Game", Toast.LENGTH_SHORT).show();
 
+        mButtons[0].setEnabled(true);
+        mButtons[1].setEnabled(true);
+        mButtons[2].setEnabled(true);
+        mButtons[3].setEnabled(true);
+        mButtons[4].setEnabled(true);
+        mButtons[5].setEnabled(true);
+        mButtons[6].setEnabled(true);
         mGame = new LightsOutGame(NUM_SQUARES);
         number_of_presses = 0;
         updateView();
