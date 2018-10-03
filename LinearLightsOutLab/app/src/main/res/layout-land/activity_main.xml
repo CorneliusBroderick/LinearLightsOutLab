@@ -84,6 +84,14 @@
                 android:tag="6"
                 android:textSize="30sp" />
 
+            <Button
+                android:id="@+id/new_game"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/new_game"
+                android:onClick="pressedNewGame"/>
+
         </TableRow>
     </TableLayout>
 
@@ -100,13 +108,6 @@
         android:textStyle="bold"
         />
 
-    <Button
-        android:id="@+id/new_game"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@id/board"
-        android:layout_below="@id/board"
-        android:text="@string/new_game"
-        android:onClick="pressedNewGame"/>
+
 
 </RelativeLayout>
